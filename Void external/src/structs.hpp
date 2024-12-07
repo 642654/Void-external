@@ -23,8 +23,8 @@ struct Entity
 {
 	char pad0[offs::health];
 	int health = 0;
-	char pad1[offs::teamId - offs::health - sizeof(offs::health)];
-	int teamId = 0;
-	char pad2[offs::flags - offs::teamId - sizeof(offs::teamId)];
+	char pad1[offs::teamId - offs::health - sizeof(int)];
+	int8_t teamId = 0;
+	char pad2[offs::flags - offs::teamId - sizeof(int8_t)];
 	int flags = 0;
 };
