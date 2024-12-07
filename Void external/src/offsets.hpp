@@ -11,7 +11,7 @@ namespace offs //again I ain't writing allat
 	constexpr std::ptrdiff_t forceJump = 0x184E9E0;
 
 	//server.dll
-	constexpr std::ptrdiff_t numOfPlayers = 0x13E5CF4
+	constexpr std::ptrdiff_t numOfPlayers = 0x13E5CF4;
 
 
 	//local player

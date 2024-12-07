@@ -21,7 +21,7 @@
     <ClCompile Include="src\misc\misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\globals\globals.cpp">
+    <ClCompile Include="src\reader\reader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -39,6 +39,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\structs.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\reader\reader.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

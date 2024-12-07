@@ -131,11 +131,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\globals\globals.cpp" />
+    <ClCompile Include="src\reader\reader.cpp" />
     <ClCompile Include="src\misc\misc.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\reader\reader.hpp" />
     <ClInclude Include="src\misc\misc.hpp" />
     <ClInclude Include="src\globals\globals.hpp" />
     <ClInclude Include="src\memory.hpp" />
