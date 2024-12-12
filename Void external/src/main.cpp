@@ -6,7 +6,7 @@
 #include "reader/reader.hpp"
 
 
-Reader reader;
+
 int main()
 {
 	if (g::client)
@@ -15,11 +15,18 @@ int main()
 		std::cout << "[-] Game not found\n";
 
 	//start the threads
+	std::thread readerThr(&Reader::ThreadLoop, &reader);
+	readerThr.detach();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(50)); 
+
 	std::thread miscThr(Misc);
 	miscThr.detach();
 
-	std::thread readerThr(&Reader::ThreadLoop, &reader);
-	readerThr.detach();
+	std::thread bhopThr(Bhop);
+	bhopThr.detach();
+
+	
 
 	while (g::running)
 	{
@@ -29,16 +36,19 @@ int main()
 			togg::thirdperson = !togg::thirdperson;
 
 
-		for (const auto& entities : reader.entities)
+		for (int i = 0; i < reader.numOfEnts; i++)
 		{
-			std::cout << "This nigga has " << entities.health << "hp \n";
+			std::cout << "This nigga has " << reader.entities[i].health << "hp \n";
+			std::cout << reader.entities[0].health << '\n';
 		}
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
-	miscThr.join();
 	readerThr.join();
+	miscThr.join();
+	bhopThr.join();
+	
 
 
 	return 0;

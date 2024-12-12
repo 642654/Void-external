@@ -13,14 +13,15 @@ class Reader
 {
 public:
 	std::vector<Entity> entities;
-
+	uintptr_t localPlayer;
+	int numOfEnts = 0;
 	void ThreadLoop();
 private:
 
 	void GetEntities();
 	uintptr_t entList;
-	int numOfEnts = 0;
 	std::mutex entitiesMutex;
 };
 
 inline Entity entity;
+inline Reader reader;

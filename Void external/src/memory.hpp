@@ -82,4 +82,12 @@ public:
 	{
 		::WriteProcessMemory(processHandle, reinterpret_cast<void*>(address), &value, sizeof(T), NULL);
 	}
+
+	void PatchEx(BYTE* dest, BYTE* source, unsigned int size)
+	{
+		DWORD oldProtect;
+		VirtualProtectEx(processHandle ,dest, size, PAGE_EXECUTE_READWRITE, &oldProtect);
+		WriteProcessMemory(processHandle, dest, source, size, NULL);
+		VirtualProtectEx(processHandle, dest, size, oldProtect, &oldProtect);
+	}
 };

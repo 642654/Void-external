@@ -6,16 +6,15 @@
 namespace g //globals I ain't typing allat
 {
 	inline bool running = true;
-	inline const auto mem = Memory{ L"cs2.exe" };
+	inline auto mem = Memory{ L"cs2.exe" };
 	inline const auto client = mem.GetModuleAddress(L"client.dll");
 	inline const auto server = mem.GetModuleAddress(L"server.dll");
 	inline const auto engine = mem.GetModuleAddress(L"engine.dll");
-	
 }
 
 namespace togg //toggles
 {
-	inline bool thirdperson = false;
+	inline bool thirdperson = true;
 }
 
 
