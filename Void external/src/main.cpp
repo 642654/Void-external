@@ -4,7 +4,7 @@
 #include "offsets.hpp"
 #include "misc/misc.hpp"
 #include "reader/reader.hpp"
-
+#include "legitbot/aimbot.h"
 
 
 int main()
@@ -26,6 +26,8 @@ int main()
 	std::thread bhopThr(Bhop);
 	bhopThr.detach();
 
+	std::thread legitbotThr(Aimbot);
+	legitbotThr.detach();
 	
 
 	while (g::running)
@@ -36,19 +38,13 @@ int main()
 			togg::thirdperson = !togg::thirdperson;
 
 
-		for (int i = 0; i < reader.numOfEnts; i++)
-		{
-			std::cout << "This nigga has " << reader.entities[i].health << "hp \n";
-			std::cout << reader.entities[0].health << '\n';
-		}
-
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 
 	readerThr.join();
 	miscThr.join();
 	bhopThr.join();
-	
+	legitbotThr.join();
 
 
 	return 0;

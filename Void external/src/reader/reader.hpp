@@ -13,6 +13,7 @@ class Reader
 {
 public:
 	std::vector<Entity> entities;
+	std::vector<Bones> entBones;
 	uintptr_t localPlayer;
 	int numOfEnts = 0;
 	void ThreadLoop();

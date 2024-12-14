@@ -17,6 +17,9 @@ namespace togg //toggles
 	inline bool thirdperson = true;
 }
 
-
+namespace o
+{
+	inline HWND hWnd = 0;
+}
 
 
