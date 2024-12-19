@@ -86,7 +86,7 @@
     <ClInclude Include="src\legitbot\aimbot.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\legitbot\RCS.h">
+    <ClInclude Include="src\legitbot\RCS.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\render\overlay.hpp">

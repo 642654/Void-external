@@ -5,21 +5,42 @@
 #include <TlHelp32.h>
 #include <string_view>
 #include <ntstatus.h>
+#include <winternl.h>
+#include <iostream>
 
-/*typedef NTSTATUS(NTAPI* NtReadVirtualMemory) (
+typedef NTSTATUS(NTAPI* _NtReadVirtualMemory)(
 	_In_ HANDLE ProcessHandle,
 	_In_opt_ PVOID BaseAddress,
 	_Out_writes_bytes_(BufferSize) PVOID Buffer,
 	_In_ SIZE_T BufferSize,
 	_Out_opt_ PSIZE_T NumberOfBytesRead
-	);*/
+	);
+
+typedef NTSTATUS(NTAPI* _NtWriteVirtualMemory) (
+	_In_ HANDLE ProcessHandle,
+	_In_opt_ PVOID BaseAddress,
+	_In_reads_bytes_(BufferSize) PVOID Buffer,
+	_In_ SIZE_T BufferSize,
+	_Out_opt_ PSIZE_T NumberOfBytesWritten
+);
+typedef NTSTATUS(NTAPI* _NtQuerySystemInformation) (
+	SYSTEM_INFORMATION_CLASS SystemInformationClass,
+	PVOID                    SystemInformation,
+	ULONG                    SystemInformationLength,
+	PULONG                   ReturnLength
+	);
+
 
 class Memory
 {
 private:
 	std::uintptr_t processId = 0;
 	void* processHandle = nullptr;
-	HMODULE hNtDll = 0;
+	HMODULE hNtDll = nullptr;
+
+	_NtReadVirtualMemory NtReadVirtualMemory;
+	_NtWriteVirtualMemory NtWriteVirtualMemory;
+	_NtQuerySystemInformation NtQuerySystemInformation;
 public:
 	
 	
@@ -44,7 +65,11 @@ public:
 		if (snapShot)
 			::CloseHandle(snapShot);
 
-		//hNtdll = GetModuleHandleW(L"ntdll.dll");
+		hNtDll = GetModuleHandleW(L"ntdll.dll");
+
+		NtReadVirtualMemory = (_NtReadVirtualMemory)GetProcAddress(hNtDll, "NtReadVirtualMemory");
+		NtWriteVirtualMemory = (_NtWriteVirtualMemory)GetProcAddress(hNtDll, "NtWriteVirtualMemory");
+		NtQuerySystemInformation = (_NtQuerySystemInformation)GetProcAddress(hNtDll, "NtQuerySystemInformation");
 	}
 
 	
@@ -84,7 +109,7 @@ public:
 	const T Read(const std::uintptr_t address) const noexcept
 	{
 		T value = { };
-		::ReadProcessMemory(processHandle, reinterpret_cast<const void*>(address), &value, sizeof(T), NULL);
+		NtReadVirtualMemory(processHandle, reinterpret_cast<PVOID>(address), &value, sizeof(T), NULL);
 		return value;
 	}
 
@@ -92,7 +117,7 @@ public:
 	template <typename T>
 	void Write(const std::uintptr_t address, const T& value) const noexcept
 	{
-		::WriteProcessMemory(processHandle, reinterpret_cast<void*>(address), &value, sizeof(T), NULL);
+		NtWriteVirtualMemory(processHandle, reinterpret_cast<PVOID>(address), (PVOID)&value, sizeof(T), NULL);
 	}
 
 	void PatchEx(BYTE* dest, BYTE* source, unsigned int size)
@@ -102,4 +127,6 @@ public:
 		WriteProcessMemory(processHandle, dest, source, size, NULL);
 		VirtualProtectEx(processHandle, dest, size, oldProtect, &oldProtect);
 	}
+
+	HANDLE HijackHandle();
 };

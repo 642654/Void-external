@@ -3,7 +3,7 @@
 #include <cmath>
 #include "../globals/globals.hpp"
 #include "../reader/reader.hpp"
-#include "../legitbot/RCS.h"
+#include "../legitbot/RCS.hpp"
 
 #define PI 3.1415926535897931
 
