@@ -1,3 +1,13 @@
+C:\Users\PC\source\repos\Void external\Void external\src\memory\memory.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\memory.obj
+C:\Users\PC\source\repos\Void external\Void external\src\render\ESP.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\ESP.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_demo.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_demo.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_draw.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_draw.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_impl_dx11.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_impl_dx11.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_impl_dx9.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_impl_dx9.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_impl_win32.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_impl_win32.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_tables.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_tables.obj
+C:\Users\PC\source\repos\Void external\Void external\extern\imgui\imgui_widgets.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\imgui_widgets.obj
 C:\Users\PC\source\repos\Void external\Void external\src\legitbot\RCS.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\RCS.obj
 C:\Users\PC\source\repos\Void external\Void external\src\legitbot\aimbot.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\aimbot.obj
 C:\Users\PC\source\repos\Void external\Void external\src\reader\reader.cpp;C:\Users\PC\source\repos\Void external\Void external\build\intermediates\reader.obj

@@ -16,11 +16,10 @@ public:
 	std::vector<Bones> entBones;
 	uintptr_t localPlayer;
 	int numOfEnts = 0;
-	void ThreadLoop();
-private:
-
 	void GetEntities();
+private:
 	uintptr_t entList;
+	std::vector<uintptr_t> entAddr;
 	std::mutex entitiesMutex;
 };
 

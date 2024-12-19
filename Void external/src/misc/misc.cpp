@@ -6,7 +6,7 @@ void Misc()
 	{
 		ThirdPerson();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(20));
+		std::this_thread::sleep_for(std::chrono::milliseconds(500));
 	}
 }
 
@@ -34,7 +34,7 @@ void Bhop()
 	while (g::running)
 	{
 		
-		if ((GetAsyncKeyState(VK_SPACE) & 0x8000))
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000)
 		{
 			if (!reader.localPlayer)
 				continue;

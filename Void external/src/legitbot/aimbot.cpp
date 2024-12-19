@@ -1,4 +1,4 @@
-#include "aimbot.h"
+#include "aimbot.hpp"
 
 void Aimbot()
 {
@@ -7,6 +7,15 @@ void Aimbot()
 		std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
 		if (!reader.localPlayer)
+			continue;
+
+		if (reader.entities[LOCAL_PLAYER].crosshairID != 255 && (GetAsyncKeyState(VK_XBUTTON2) & 0x8000))
+		{
+			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+		}
+
+		if (!(GetAsyncKeyState(VK_XBUTTON1) & 0x8000))
 			continue;
 
 		Vec2 RCSangles = RCS();
@@ -58,5 +67,6 @@ void Aimbot()
 
 		g::mem.Write(g::client + offs::viewAngles, angles.x);
 		g::mem.Write(g::client + offs::viewAngles + 4, angles.y);
+
 	}
 }

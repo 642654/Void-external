@@ -20,11 +20,12 @@ namespace offs //again I ain't writing allat
 
 
 	//local player
+	constexpr std::ptrdiff_t gamescene = 0x328;
 	constexpr std::ptrdiff_t health = 0x344;
 	constexpr std::ptrdiff_t teamId = 0x3E3;
 	constexpr std::ptrdiff_t flags = 0x3EC;
-	constexpr std::ptrdiff_t gamescene = 0x328;
 	constexpr std::ptrdiff_t position = 0x1324;
+	constexpr std::ptrdiff_t crosshairId = 0x1458;
 	constexpr std::ptrdiff_t aimPunch = 0x1584;
 	constexpr std::ptrdiff_t shotsFired = 0x23FC;
 

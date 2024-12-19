@@ -151,6 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\memory\memory.cpp" />
+    <ClCompile Include="src\render\ESP.cpp" />
+    <ClCompile Include="extern\imgui\imgui.cpp" />
+    <ClCompile Include="extern\imgui\imgui_demo.cpp" />
+    <ClCompile Include="extern\imgui\imgui_draw.cpp" />
+    <ClCompile Include="extern\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="extern\imgui\imgui_impl_dx9.cpp" />
+    <ClCompile Include="extern\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="extern\imgui\imgui_tables.cpp" />
+    <ClCompile Include="extern\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\legitbot\RCS.cpp" />
     <ClCompile Include="src\legitbot\aimbot.cpp" />
     <ClCompile Include="src\reader\reader.cpp" />
@@ -159,13 +169,23 @@
     <ClCompile Include="src\render\overlay.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\render\ESP.hpp" />
+    <ClInclude Include="extern\imgui\imconfig.h" />
+    <ClInclude Include="extern\imgui\imgui.h" />
+    <ClInclude Include="extern\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="extern\imgui\imgui_impl_dx9.h" />
+    <ClInclude Include="extern\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="extern\imgui\imgui_internal.h" />
+    <ClInclude Include="extern\imgui\imstb_rectpack.h" />
+    <ClInclude Include="extern\imgui\imstb_textedit.h" />
+    <ClInclude Include="extern\imgui\imstb_truetype.h" />
     <ClInclude Include="src\legitbot\RCS.h" />
-    <ClInclude Include="src\legitbot\aimbot.h" />
+    <ClInclude Include="src\legitbot\aimbot.hpp" />
     <ClInclude Include="src\render\overlay.hpp" />
     <ClInclude Include="src\reader\reader.hpp" />
     <ClInclude Include="src\misc\misc.hpp" />
     <ClInclude Include="src\globals\globals.hpp" />
-    <ClInclude Include="src\memory.hpp" />
+    <ClInclude Include="src\memory\memory.hpp" />
     <ClInclude Include="src\offsets.hpp" />
     <ClInclude Include="src\structs.hpp" />
   </ItemGroup>
