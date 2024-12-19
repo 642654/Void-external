@@ -8,15 +8,16 @@ void ESP()
 void SkeletonESP()
 {
 	ImVec2 pixelPos;
-	for (int i = 1; i < reader.numOfEnts; i++)
+	for (int i = 1; i < 20; i++)
 	{
 		if (reader.entities[i].health <= 0)
 			continue;
 
+
+
 		if (!World2Screen(reader.entities[i].pos, pixelPos))
 			continue;
 
-		
 
 		for (int i2 = 0; i2 < sizeof(boneConnections) / sizeof(BoneConnection); i2++)
 		{
@@ -69,10 +70,7 @@ void BoxESP()
 
 bool World2Screen(Vec3 Pos, ImVec2& pixelPos)
 {
-	
-	Mat4x4 matrix = g::mem.Read<Mat4x4>(g::client + offs::viewMatrix);
-		
-	float wComp = matrix.m[12] * Pos.x + matrix.m[13] * Pos.y + matrix.m[14] * Pos.z + matrix.m[15];
+	float wComp = reader.matrix.m[12] * Pos.x + reader.matrix.m[13] * Pos.y + reader.matrix.m[14] * Pos.z + reader.matrix.m[15];
 
 	if (wComp < 0.01f)
 		return false;
@@ -81,8 +79,8 @@ bool World2Screen(Vec3 Pos, ImVec2& pixelPos)
 	float scrCenterY = g::screenHeight * .5f;
 
 	float invWComp = 1.0f / wComp;
-	pixelPos.x = scrCenterX + (matrix.m[0] * Pos.x + matrix.m[1] * Pos.y + matrix.m[2] * Pos.z + matrix.m[3]) * invWComp * scrCenterX;
-	pixelPos.y = scrCenterY - (matrix.m[4] * Pos.x + matrix.m[5] * Pos.y + matrix.m[6] * Pos.z + matrix.m[7]) * invWComp * scrCenterY;
+	pixelPos.x = scrCenterX + (reader.matrix.m[0] * Pos.x + reader.matrix.m[1] * Pos.y + reader.matrix.m[2] * Pos.z + reader.matrix.m[3]) * invWComp * scrCenterX;
+	pixelPos.y = scrCenterY - (reader.matrix.m[4] * Pos.x + reader.matrix.m[5] * Pos.y + reader.matrix.m[6] * Pos.z + reader.matrix.m[7]) * invWComp * scrCenterY;
 
 	return true;
 }

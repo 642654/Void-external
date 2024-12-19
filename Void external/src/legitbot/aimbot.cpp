@@ -23,7 +23,7 @@ void Aimbot()
 
 		Vec3 deltaVec;
 		float bestDistance = FLT_MAX;
-		for (int i = 1; i < reader.numOfEnts; i++) //exclude myself from the loop
+		for (int i = 1; i < 20; i++) //exclude myself from the loop
 		{
 			if (reader.entities[i].health <= 0 || reader.entities[i].health > 100)
 				continue;
