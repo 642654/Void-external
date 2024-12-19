@@ -25,8 +25,6 @@ int main()
 
 	std::this_thread::sleep_for(std::chrono::milliseconds(50));  // wait for the first read
 
-	std::thread miscThr(Misc);
-	miscThr.detach();
 
 	std::thread bhopThr(Bhop);
 	bhopThr.detach();
@@ -41,8 +39,7 @@ int main()
 	{
 		if (GetAsyncKeyState(VK_END) & 1)
 			g::running = false;
-		if (GetAsyncKeyState(VK_INSERT) & 1)
-			togg::thirdperson = !togg::thirdperson;
+		
 
 		BeginRender();
 		Render();
@@ -54,7 +51,6 @@ int main()
 
 	UninitOverlay();
 	readerThr.join();
-	miscThr.join();
 	bhopThr.join();
 	legitbotThr.join();
 

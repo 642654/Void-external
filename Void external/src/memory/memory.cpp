@@ -3,7 +3,3 @@
 
 #include "memory.hpp"
 
-int kloc()
-{
-	
-}

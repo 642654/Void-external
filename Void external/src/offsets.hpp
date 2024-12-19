@@ -4,19 +4,15 @@
 namespace offs //again I ain't writing allat
 {
 	//client.dll
-	constexpr std::ptrdiff_t localPlayer = 0x1862FB0	;
-	constexpr std::ptrdiff_t entList = 0x1862FB0;
-	constexpr std::ptrdiff_t thirdperson = 0x1A5E4D0; //set to 256 for thirdperson and 0 for normal
-	constexpr std::ptrdiff_t viewMatrix = 0x1A54550;
-	constexpr std::ptrdiff_t forceJump = 0x184E9E0;
-	constexpr std::ptrdiff_t thirdPersonNop = 0x780E9D;
-	constexpr std::ptrdiff_t thirdPersonCamNop = 0x782279;
-	constexpr std::ptrdiff_t distFromCam = 0x1A5E4E0;
-	constexpr std::ptrdiff_t viewAngles = 0x1A5E650;
+	constexpr std::ptrdiff_t localPlayer = 0x1864CC8;
+	constexpr std::ptrdiff_t entList = 0x1871FB0;
+	constexpr std::ptrdiff_t viewMatrix = 0x1A63C10;
+	constexpr std::ptrdiff_t forceJump = 0x185D9D0;
+	constexpr std::ptrdiff_t viewAngles = 0x1A6DD10;
 
 
 	//server.dll
-	constexpr std::ptrdiff_t numOfPlayers = 0x13E5CF4;
+	constexpr std::ptrdiff_t numOfPlayers = 0x13E8CF4;
 
 
 	//local player

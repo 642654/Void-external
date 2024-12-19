@@ -17,7 +17,7 @@ namespace g //globals I ain't typing allat
 
 namespace togg //toggles
 {
-	inline bool thirdperson = false;
+	
 }
 
 namespace overlay
