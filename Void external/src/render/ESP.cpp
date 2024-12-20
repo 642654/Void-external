@@ -14,7 +14,6 @@ void SkeletonESP()
 			continue;
 
 
-
 		if (!World2Screen(reader.entities[i].pos, pixelPos))
 			continue;
 

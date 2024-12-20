@@ -122,5 +122,8 @@
     <ClInclude Include="src\render\ESP.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\memory\nt.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

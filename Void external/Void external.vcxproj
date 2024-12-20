@@ -169,6 +169,7 @@
     <ClCompile Include="src\render\overlay.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\memory\nt.hpp" />
     <ClInclude Include="src\render\ESP.hpp" />
     <ClInclude Include="extern\imgui\imconfig.h" />
     <ClInclude Include="extern\imgui\imgui.h" />

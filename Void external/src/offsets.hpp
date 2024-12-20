@@ -4,15 +4,15 @@
 namespace offs //again I ain't writing allat
 {
 	//client.dll
-	constexpr std::ptrdiff_t localPlayer = 0x1864CC8;
-	constexpr std::ptrdiff_t entList = 0x1871FB0;
-	constexpr std::ptrdiff_t viewMatrix = 0x1A63C10;
-	constexpr std::ptrdiff_t forceJump = 0x185D9D0;
-	constexpr std::ptrdiff_t viewAngles = 0x1A6DD10;
+	constexpr std::ptrdiff_t localPlayer = 0x1868CC8;
+	constexpr std::ptrdiff_t entList = 0x1875FB0;
+	constexpr std::ptrdiff_t viewMatrix = 0x1A7F610;
+	constexpr std::ptrdiff_t forceJump = 0x18619D0;
+	constexpr std::ptrdiff_t viewAngles = 0x1A89710;
 
 
 	//server.dll
-	constexpr std::ptrdiff_t numOfPlayers = 0x13E8CF4;
+	constexpr std::ptrdiff_t numOfPlayers = 0x13EDD04;
 
 
 	//local player

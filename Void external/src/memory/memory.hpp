@@ -1,46 +1,29 @@
 #pragma once
 #define WIN32_LEAN_AND_MEAN
-#define STATUS ((NTSTATUS)0x00000000L)
 #include <Windows.h>
 #include <TlHelp32.h>
 #include <string_view>
 #include <ntstatus.h>
-#include <winternl.h>
 #include <iostream>
+#include <vector>
+#include <thread>
+#include "nt.hpp"
 
-typedef NTSTATUS(NTAPI* _NtReadVirtualMemory)(
-	_In_ HANDLE ProcessHandle,
-	_In_opt_ PVOID BaseAddress,
-	_Out_writes_bytes_(BufferSize) PVOID Buffer,
-	_In_ SIZE_T BufferSize,
-	_Out_opt_ PSIZE_T NumberOfBytesRead
-	);
 
-typedef NTSTATUS(NTAPI* _NtWriteVirtualMemory) (
-	_In_ HANDLE ProcessHandle,
-	_In_opt_ PVOID BaseAddress,
-	_In_reads_bytes_(BufferSize) PVOID Buffer,
-	_In_ SIZE_T BufferSize,
-	_Out_opt_ PSIZE_T NumberOfBytesWritten
-);
-typedef NTSTATUS(NTAPI* _NtQuerySystemInformation) (
-	SYSTEM_INFORMATION_CLASS SystemInformationClass,
-	PVOID                    SystemInformation,
-	ULONG                    SystemInformationLength,
-	PULONG                   ReturnLength
-	);
 
 
 class Memory
 {
 private:
 	std::uintptr_t processId = 0;
-	void* processHandle = nullptr;
+	HANDLE processHandle = nullptr;
 	HMODULE hNtDll = nullptr;
 
 	_NtReadVirtualMemory NtReadVirtualMemory;
 	_NtWriteVirtualMemory NtWriteVirtualMemory;
 	_NtQuerySystemInformation NtQuerySystemInformation;
+	_NtQueryObject NtQueryObject;
+	_NtDuplicateObject NtDuplicateObject;
 public:
 	
 	
@@ -56,7 +39,6 @@ public:
 			if (!processName.compare(entry.szExeFile))
 			{
 				processId = entry.th32ProcessID;
-				processHandle = ::OpenProcess(PROCESS_ALL_ACCESS, FALSE, processId);
 				break;
 			}
 		}
@@ -70,6 +52,14 @@ public:
 		NtReadVirtualMemory = (_NtReadVirtualMemory)GetProcAddress(hNtDll, "NtReadVirtualMemory");
 		NtWriteVirtualMemory = (_NtWriteVirtualMemory)GetProcAddress(hNtDll, "NtWriteVirtualMemory");
 		NtQuerySystemInformation = (_NtQuerySystemInformation)GetProcAddress(hNtDll, "NtQuerySystemInformation");
+		NtQueryObject = (_NtQueryObject)GetProcAddress(hNtDll, "NtQueryObject");
+		NtDuplicateObject = (_NtDuplicateObject)GetProcAddress(hNtDll, "NtDuplicateObject");
+
+		processHandle = HijackHandle();
+		if (!processHandle)
+			abort();
+		else
+			std::cout << "[+] Handle successfully hijacked\n";
 	}
 
 	
@@ -130,3 +120,5 @@ public:
 
 	HANDLE HijackHandle();
 };
+
+
